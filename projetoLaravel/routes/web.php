@@ -1,0 +1,33 @@
+<?php
+
+use App\Http\Controllers\ClienteControladorController;
+use App\Http\Controllers\MeuControladorController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function (Request $r) {
+    // dd($r);
+    // var_dump($r->headers);
+
+    return view('welcome');
+});
+
+Route::get('produtos', [MeuControladorController::class, 'getProduto']);
+Route::get('nome', [MeuControladorController::class, 'getNome']);
+Route::get('idade', [MeuControladorController::class, 'getIdade']);
+Route::get('multiplicar', [MeuControladorController::class, 'getMultiplicar']);
+
+// Route::resource('clientes', [ClienteControladorController::class, '']);
+Route::resource('clientes', ClienteControladorController::class);
+// Route::get('clientes/{nome}', [ClienteControladorController::class, 'pesquisar'])->name('clientes.pesquisar');
